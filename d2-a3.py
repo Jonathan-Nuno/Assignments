@@ -13,7 +13,7 @@
 #        print(pn, "is a prime number!")
 #        break
 
-### WORK IN PROGRESSfunction with T/F statement to return if prime or not
+### Solution 2
 print("Prime number detector")
 
 def prim(n):
