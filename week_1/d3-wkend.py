@@ -32,7 +32,7 @@ while loop:
 
     sel = (input("Please enter your selection: "))
 
-    if sel in ('1', '2', '3', "4" ,  "q", "Q"):
+    if sel in ('1', '2', '3', "q" , "Q"):
         if sel == '1': #add task
             name = input("Please provide a task name: ")
             prio = input("Please select prioty level (High | Medium | Low): ")
@@ -49,8 +49,5 @@ while loop:
             print("You have quit the TODO List")
             break
 
-        elif sel == "4":
-            print(todo)
-            
     else: #repeat loop if invalid selection occurs
         print("Please enter a valid secltion")
