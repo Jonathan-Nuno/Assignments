@@ -58,10 +58,6 @@ def cost_calc(time_played, cost, time):
     x = time_played / time 
     return (x * cost)
 
-def error_handle():
-    selector 
-
-
 for index in range(1,13):
     pool_table = PoolTable(index)
     pool_tables.append(pool_table)
