@@ -28,6 +28,10 @@ class PoolTable:
     
     def total_time_no_end(self):
         self.time_played = datetime.now() - self.start_time
+    
+    def time_clear(self):
+        self.start_time = None
+        self.end_time = None
 
 
 def display_start():
@@ -105,20 +109,24 @@ while True:
         except ValueError:
             print("Invalid input, please only enter numbers")
         except IndexError:
-            print("Please enter number between 1 through 12")       
+            print("Please enter number between 1 through 12")
+            break       
         
         if pool_table.start_time == None and pool_table.end_time == None:
             print("Invalid selection, Table not in use")
+        
         elif pool_table.start_time != None and pool_table.end_time == None:
             pool_table.total_time_no_end()
             played_time_mins = int(round(pool_table.time_played.total_seconds() / 60))
             current_cost = cost_calc(played_time_mins, cost, time)
             print(f'Pool table #{pool_table.table_number} | Current Time Played - {played_time_mins} minutes | Current Cost - ${current_cost:.2f}')
-        else:    
+        
+        elif pool_table.start_time != None and pool_table.end_time != None:
             pool_table.total_time()
             played_time_mins = int(round(pool_table.time_played.total_seconds() / 60))
             final_cost = cost_calc(played_time_mins, cost, time)
             print(f'Pool table #{pool_table.table_number} | Final Total Time - {played_time_mins} minutes | Final Total Cost - ${final_cost:.2f}')
+            
 
     else: # exit table manager
         print("Thank you for using Table Manager")
