@@ -1,7 +1,9 @@
 from datetime import datetime
 
 pool_tables = []
-fmt = '%H:%M:%S'
+fmt = '%H:%M:%S' # format for datetime
+cost = 30 # cost per time rate
+time = 60 # time rate in minutes
 
 
 class PoolTable:
@@ -9,7 +11,6 @@ class PoolTable:
         self.table_number = table_number
         self.start_time = None
         self.end_time = None
-        # self.cost = cost
         self.is_occupied = False
         self.time_played = None
 
@@ -39,12 +40,6 @@ def display_start():
     !!Enter any other key to EXIT!!
     """)
 
-# def display_status(x):
-#     if x.is_occupied != True:
-#         print("Occupied")
-#     else: 
-#         print("Unoccupied")
-
 def display_tables():
     for index in range(0, len(pool_tables)):
         table = pool_tables[index]
@@ -59,6 +54,9 @@ def format_time(dt):
     else:
         return dt.strftime(fmt)
 
+def cost_calc(time_played, cost, time):
+    x = time_played / time 
+    return (x * cost)
 
 for index in range(1,13):
     pool_table = PoolTable(index)
@@ -99,11 +97,13 @@ while True:
         elif pool_table.start_time != None and pool_table.end_time == None:
             pool_table.total_time_no_end()
             played_time_mins = int(round(pool_table.time_played.total_seconds() / 60))
-            print(f'Pool table #{pool_table.table_number} | Current Total Time - {played_time_mins} minutes | Current Total Cost - $26')
+            current_cost = cost_calc(32, cost, time)
+            print(f'Pool table #{pool_table.table_number} | Current Time Played - {played_time_mins} minutes | Current Cost - ${current_cost:.2f}')
         else:    
             pool_table.total_time()
             played_time_mins = int(round(pool_table.time_played.total_seconds() / 60))
-            print(f'Pool table #{pool_table.table_number} | Final Total Time - {played_time_mins} minutes | Final Total Cost - $26')
+            final_cost = cost_calc(62, cost, time)
+            print(f'Pool table #{pool_table.table_number} | Final Total Time - {played_time_mins} minutes | Final Total Cost - ${final_cost:.2f}')
 
     else: # exit table manager
         print("Thank you for using Table Manager")
