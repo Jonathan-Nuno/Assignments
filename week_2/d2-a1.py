@@ -82,9 +82,10 @@ while True:
         except ValueError:
             print("Invalid input, please only enter numbers")
         except IndexError:
-            print("Please enter number between 1 through 12")
-
-        if pool_table.is_occupied == True:
+            pass
+        if selector > 12:
+            print("Please enter a number between 1 through 12")
+        elif pool_table.is_occupied == True:
             print("This table is currently occupied")
         else:
             pool_table.check_out()
@@ -96,9 +97,10 @@ while True:
         except ValueError:
             print("Invalid input, please only enter numbers")
         except IndexError:
-            print("Please enter number between 1 through 12")            
-        
-        if pool_table.is_occupied == False:
+            pass          
+        if selector > 12:
+            print("Please enter a number between 1 through 12")
+        elif pool_table.is_occupied == False:
             print("This table has not been checked out")
         else:
             pool_table.check_in()
@@ -110,11 +112,9 @@ while True:
         except ValueError:
             print("Invalid input, please only enter numbers")
         except IndexError:
-            print("Please enter number between 1 through 12")       
+            pass    
         except TypeError:
-            print("Please enter number between 1 through 12") 
-
-
+            pass
         if selector > 12:
             print("Please enter a number between 1 through 12")
 
