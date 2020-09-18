@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 pool_tables = []
 fmt = '%H:%M:%S' # format for datetime
@@ -109,10 +110,15 @@ while True:
         except ValueError:
             print("Invalid input, please only enter numbers")
         except IndexError:
-            print("Please enter number between 1 through 12")
-            break       
-        
-        if pool_table.start_time == None and pool_table.end_time == None:
+            print("Please enter number between 1 through 12")       
+        except TypeError:
+            print("Please enter number between 1 through 12") 
+
+
+        if selector > 12:
+            print("Please enter a number between 1 through 12")
+
+        elif pool_table.start_time == None and pool_table.end_time == None:
             print("Invalid selection, Table not in use")
         
         elif pool_table.start_time != None and pool_table.end_time == None:
