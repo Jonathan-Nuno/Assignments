@@ -1,0 +1,7 @@
+ul li:nth-child(3) {
+    background-color: green
+}
+
+body {
+    background-color: yellow
+}
