@@ -1,0 +1,22 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    width: 600px;
+}
+#banner {
+    height: 75px;
+    background-color: red;
+    margin: 20px
+}
+#box-container {
+    display: flex;
+}
+.box {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+}
