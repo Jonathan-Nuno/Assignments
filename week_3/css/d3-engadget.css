@@ -1,0 +1,53 @@
+body {
+    margin: 0 auto;
+}
+p {
+    padding: 5px;
+}
+#menu {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    color: white;
+}
+.desktop-banner {
+    display: block;
+    width: 100%;
+}
+.mobile-banner {
+    display: none;
+    width: 100%;
+}
+.line {
+    break-after: right;
+}
+#icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+}
+.icon {
+    width: 120px;
+    height: 120px;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    #menu {
+        flex-direction: column;
+    }
+    .desktop-banner{
+        display: none;
+    }
+    .mobile-banner {
+        display: block;
+    }
+    #icons {
+        display: flex;
+    }
+}

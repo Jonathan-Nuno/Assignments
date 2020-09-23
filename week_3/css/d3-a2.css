@@ -20,3 +20,8 @@
     width: 200px;
     margin: 10px;
 }
+.inner-box {
+    background-color: blue;
+    height: 50px;
+    width: 150px;
+}
