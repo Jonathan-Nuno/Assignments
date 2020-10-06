@@ -28,7 +28,7 @@ function showMovieDetails(imdbID) {
     request.onload = function () {
         let details = JSON.parse(this.responseText)
         let detailItem = `<div>
-        <img src = ${details.Poster} />
+        <img class = "displayImg" src = ${details.Poster} />
         <p class = "details">Actors: ${details.Actors}</p>
         <p class = "details">Release date: ${details.Released}</p>
         <p class = "details">Rating: ${details.Rated}</p>
