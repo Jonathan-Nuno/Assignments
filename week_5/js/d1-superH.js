@@ -1,49 +1,58 @@
-let request = new XMLHttpRequest()
 
 let spiderList = document.getElementById("spiderList")
-
-request.open('GET', 'http://www.omdbapi.com/?s=spider-man&apikey=f5da275d')
-
-request.addEventListener('load', function () {
-
-    let result = JSON.parse(this.responseText)
-
-    let spiders = result.Search.map((spiders) => {
-        return `<img onclick = "spiderInfo('${spiders.imdbID}')" src = ${spiders.Poster} alt = "${spiders.Title}" />
-                <p>${spiders.Title}</p>`
-    })
-
-    spiderList.insertAdjacentHTML('beforeend', spiders.join(''))
-
-})
-
-
-request.send()
-
 let featSpider = document.getElementById("featSpider")
 
-function spiderInfo(imdbID) {
-    let info = `http://www.omdbapi.com/?i=${imdbID}&apikey=f5da275d`
-    fetch(info)
-    .then(response => response.json())
-    .then(movies => {
-        console.log(movies)
-    })
+//GET movie info from url
+function getSpiderInfo(completion) {
 
-    featSpider.insertAdjacentHTML('beforeend', movies.join(''))
+    let request = new XMLHttpRequest()
+
+    request.onload = function () {
+
+        movies = JSON.parse(this.responseText)
+        completion(movies)
+
+    }
+
+    request.open('GET', 'http://www.omdbapi.com/?s=spider-man&apikey=f5da275d')
+    request.send()
+
+
 }
-// function spiderInfo(imdbID) {
-//     let reqInfo = new XMLHttpRequest()
 
-//     let info = `http://www.omdbapi.com/?i=${imdbID}&apikey=f5da275d`
-//     reqInfo.open('GET', info)
+//display movie details based on imdbID
+function showMovieDetails(imdbID) {
+    let request = new XMLHttpRequest()
+    request.open('GET', `http://www.omdbapi.com/?i=${imdbID}&apikey=f5da275d`)
 
-//     reqInfo.addEventListener("load", function () {
-//         let spiderStats = JSON.parse(this.responseText)
+    request.onload = function () {
+        let details = JSON.parse(this.responseText)
+        let detailItem = `<div>
+        <p>${details.Actors}</p>
+        <p>${details.Released}</p>
+        <p>${details.Rated}</p>
+        </div>`
 
-//         return `<p>${spiderStats.Year}</p>`
-        
-//     })
+        featSpider.innerHTML = detailItem
+    }
 
-//     featSpider.insertAdjacentHTML('beforeend', spiderStats)
-// }
+    request.send()
+}
+
+// display movies
+function displayMovies(movies) {
+  
+    let movieItems = movies.Search.map((movie) => {
+        return `<div>
+        <img src = ${movie.Poster} />
+        <p>${movie.Title}</p>
+        <button onclick = "showMovieDetails('${movie.imdbID}')">Show Details</button>
+        </div>
+        `
+    })
+    spiderList.innerHTML = movieItems
+}
+
+getSpiderInfo((movies) => {
+    displayMovies(movies)
+})
