@@ -28,9 +28,10 @@ function showMovieDetails(imdbID) {
     request.onload = function () {
         let details = JSON.parse(this.responseText)
         let detailItem = `<div>
-        <p>${details.Actors}</p>
-        <p>${details.Released}</p>
-        <p>${details.Rated}</p>
+        <img src = ${details.Poster} />
+        <p class = "details">Actors: ${details.Actors}</p>
+        <p class = "details">Release date: ${details.Released}</p>
+        <p class = "details">Rating: ${details.Rated}</p>
         </div>`
 
         featSpider.innerHTML = detailItem

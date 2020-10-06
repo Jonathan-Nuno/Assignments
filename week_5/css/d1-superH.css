@@ -1,0 +1,35 @@
+body {
+    margin: 0 auto;
+}
+p {
+    padding: 5px;
+    margin: 5px;
+    width: 130px;
+    text-align: center;
+}
+.details {
+    text-align: left;
+}
+div {
+    display: block;
+    height: 300px;
+}
+#spiderList {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    width: 50%;
+    height: 50%;
+}
+img {
+    width: 150px;
+    height: 221px;
+}
+button {
+    width: 95px;
+}
+#featSpider {
+    float: right;
+    left: 500px;
+    top: 200px;
+}
