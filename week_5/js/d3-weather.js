@@ -19,7 +19,7 @@ currentLocationButton.addEventListener('click', function (){
 })
 
 // make a request to get weather
-let apiKey = "29ead91521471572538da32a13ff79d4"
+let apiKey = "te2"
 let url = `http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=${apiKey}&units=imperial`
 
 
