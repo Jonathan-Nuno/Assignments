@@ -2,6 +2,8 @@
 
     <head>
 
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <link href = "css/d4-grocery.css" rel = "stylesheet" />
     </head>
 
     <body>
@@ -13,6 +15,9 @@
         <input type="text" id="storeAddress">
         <button id="addGroceryStore">Add store</button>
         <ul id="storeList"></ul>
+
+
+
 
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,10 +47,11 @@
 
             // initialize the firebase firestore database
             var db = firebase.firestore();
+            
 
         </script>
 
-        <script src="js/d4-grocery.js"></script>
+        <script type="text/javascript"  src="js/d4-grocery.js"></script>
     </body>
 
 </html>
