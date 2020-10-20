@@ -1,28 +1,31 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 
 // array to store all movies
-let movies = [{
-    title: 'Lord of the Rings',
-    year: '2019'
+let names = [{
+    firstName: 'Lord of the Rings',
+    lastName: '2019'
 },
 {
-    title: 'Spiderman', 
-    year: '2019'
+    firstName: 'Spiderman', 
+    lastName: '2019'
 }
 ]
 
 // MIDDLEWARE
+// enalble CORS
+app.use(cors())
 // telling express how to parse
 app.use(express.json())
 
-app.get('/name', (req, res) => {
+app.get('/names', (req, res) => {
     let names = {firstName: 'John', lastName: 'Doe'}
     res.json(names)
 })
 
-app.get('/name/:category', (req, res) => {
+app.get('/names/:category', (req, res) => {
     let category = req.params.category
     console.log(req.params.category)
     
@@ -40,15 +43,14 @@ app.get('/digital-crafts/cohort/:year', (req, res) => {
     res.send('I study at DigitalCrafts ' + year + ' Cohort')
 })
 
-app.post('/movies', (req, res) => {
-    let title = req.body.title
-    let year = req.body.year
-
-    console.log(title, year)
-
-    res.send('POST REQUEST FOR ADDING MOVIES')
+app.post('/names', (req, res) => {
+    let firstName = req.body.firstName
+    let lastName = req.body.lastName
+    let fullName = {firstName: firstName, lastName: lastName}
+    names.push(fullName)
+    res.json({success: true})
 })
 
-app.listen(2999, () => {
+app.listen(3000, () => {
     console.log('Server is running...')
 })
