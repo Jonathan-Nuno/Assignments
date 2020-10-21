@@ -1,0 +1,30 @@
+.container {
+    display: grid;
+    place-items: center;
+    grid-template-rows: auto 1fr auto;
+}
+.header, .main, .footer, h1, h2{
+    display: grid;
+    place-items: center;
+    width: clamp(17ch, 50%, 40ch);
+}
+ul {
+    display: grid;
+    place-items: center;
+    width: clamp(19ch, 100%, 40ch);
+}
+input {
+    width: clamp(12ch, 50%, 21ch);
+}
+body {
+    background-color: #4c654c;
+    color: #c5c571;
+    font-family: 'Architects Daughter', cursive;
+    border: double 16px;
+    border-color: #3e2323;
+    margin: 0px 0px 0px 0px;
+}
+
+#deleter {
+    display: none;
+}
