@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const {v4: uuidv4} = require('uuid')
 
 let todoListItems = [
-    {task: 'Wash car', priority: 'Medium'},
-    {task: 'Prep dinner', priority: 'High'}
+    { task: 'Wash car', priority: 'Medium', dateCreated: '10/20/2020' },
+    { task: 'Prep dinner', priority: 'High', dateCreated: '10/18/2020' }
 ]
 
 let d = new Date()
@@ -22,7 +23,7 @@ app.listen(3000, () => {
     console.log('Server is running...')
 })
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Homepage')
 })
 
@@ -31,16 +32,30 @@ app.get('/todoList', (req, res) => {
 })
 
 app.post('/todoList', (req, res) => {
-
-    let task = req.body.task
-    let priority = req.body.priority
-
-    let listItem = {task:task, priority:priority, dateCreated:dateCreated}
-
-    todoListItems.push(listItem)
+    //get task name and prior level
+    const task = req.body.task
+    const priority = req.body.priority
+    // checking if values are not null
+    if (task != null && priority != null && dateCreated != null) {
+        let listItem = { task: task, priority: priority, dateCreated: dateCreated, taskId: uuidv4()}
+        todoListItems.push(listItem)
+        res.json({success: true})
+    } else {
+        res.json({success: false, errorMessage: 'Unable to add task'})
+    }
 
     console.log(task, priority, dateCreated)
 
-    res.json({success: true})
+})
+
+app.delete('/todoList/:taskId', (req, res) => {
+
+    let taskId = req.params.taskId
+
+    todoListItems = todoListItems.filter(todo => {
+       return todo.taskId != taskId
+    })
+
+    res.json({sucess: true})
 
 })
