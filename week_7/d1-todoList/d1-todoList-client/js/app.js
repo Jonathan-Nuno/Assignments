@@ -2,6 +2,7 @@
 const taskTextBox = document.getElementById('taskTextBox')
 const priorityTextBox = document.getElementById('priorityTextBox')
 const addTaskButton = document.getElementById('addTaskButton')
+const visibleButton = document.getElementById('visibleButton')
 
 addTaskButton.addEventListener('click', () => {
     let task = taskTextBox.value
@@ -24,9 +25,17 @@ addTaskButton.addEventListener('click', () => {
         })
 })
 
-
-
 const taskList = document.getElementById('taskList')
+
+function makeVisible() {
+    let dButton = document.getElementById("deleter");
+    if (dButton.style.display === "block") {
+        dButton.style.display = "none";
+    } else {
+        dButton.style.display = "block";
+    }
+
+}
 
 function deleteTask(taskId) {
 
@@ -49,7 +58,7 @@ function populateAllTask() {
             let taskItems = tasks.map((list) => {
                 return `<li>
                 <label>${list.task} - ${list.priority} - ${list.dateCreated}</label>
-                <button onclick='deleteTask("${list.taskId}")'>Delete</button> 
+                <div id="deleter"><button onclick='deleteTask("${list.taskId}")'>Delete</button> </div>
                 </li>`
             })
 

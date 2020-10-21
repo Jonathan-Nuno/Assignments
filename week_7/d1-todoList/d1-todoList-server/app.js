@@ -4,8 +4,8 @@ const cors = require('cors')
 const {v4: uuidv4} = require('uuid')
 
 let todoListItems = [
-    { task: 'Wash car', priority: 'Medium', dateCreated: '10/20/2020' },
-    { task: 'Prep dinner', priority: 'High', dateCreated: '10/18/2020' }
+    // { task: 'Wash car', priority: 'Medium', dateCreated: '10/20/2020' },
+    // { task: 'Prep dinner', priority: 'High', dateCreated: '10/18/2020' }
 ]
 
 let d = new Date()
