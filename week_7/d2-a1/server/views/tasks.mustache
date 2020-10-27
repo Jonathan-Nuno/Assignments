@@ -1,0 +1,25 @@
+<html>
+<head></head>
+
+<body>
+    <h1> List of Tasks </h1>
+
+    <ul>
+    {{#allTasks}}
+
+    <li>
+    {{title}} - {{priorirty}}
+    </li>
+
+    {{/allTasks}}
+    </ul>
+
+    <input type="text" placeholder = "title" name="title" />
+    <input type="text" placeholder = "priority" name="priority" />
+    <button>Save</button>
+
+
+
+
+</body>
+</html>
