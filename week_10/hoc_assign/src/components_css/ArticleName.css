@@ -1,0 +1,16 @@
+.articleTitle {
+    color: rgb(73, 106, 255);
+}
+.comLikeBar {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+}
+button {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    border: 0px;
+    padding: 5px;
+    font-size: 100%;
+}
